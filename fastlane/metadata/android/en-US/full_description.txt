@@ -1,0 +1,1 @@
+Rasail is a free, open-source messenger with end-to-end encryption and a zero-knowledge relay. No phone number or email is needed. Screenshots are blocked inside the app.

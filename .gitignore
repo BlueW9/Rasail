@@ -1,0 +1,12 @@
+# Signing material: must never be committed
+*.jks
+*.keystore
+*.p12
+keystore.properties
+# Build output
+build/
+.gradle/
+.idea/
+local.properties
+*.apk
+*.aab
