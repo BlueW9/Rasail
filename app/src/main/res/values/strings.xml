@@ -2,5 +2,13 @@
 <resources>
     <string name="app_name">Rasail</string>
     <string name="empty_title">No chats yet</string>
-    <string name="new_chat">New chat</string>
+    <string name="my_identity">My identity</string>
+    <string name="back">Back</string>
+    <string name="identity_title">My identity</string>
+    <string name="identity_id_label">Your anonymous ID</string>
+    <string name="identity_copy">Copy my code</string>
+    <string name="identity_copied">Code copied</string>
+    <string name="identity_hint">Share this code only with people you want to talk to. It is derived from your public key and reveals nothing about you.</string>
+    <string name="identity_loading">Creating your keys…</string>
+    <string name="identity_failed">Your identity could not be read. It was not replaced, so nothing was lost. Please report this.</string>
 </resources>

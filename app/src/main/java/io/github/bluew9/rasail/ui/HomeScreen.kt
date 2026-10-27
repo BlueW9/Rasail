@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import io.github.bluew9.rasail.R
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onOpenIdentity: () -> Unit) {
     val colors = MaterialTheme.colorScheme
     Box(
         modifier = Modifier
@@ -51,11 +51,11 @@ fun HomeScreen() {
             )
             Spacer(Modifier.height(28.dp))
             OutlinedButton(
-                onClick = { /* stage 4: start a chat */ },
+                onClick = onOpenIdentity,
                 border = BorderStroke(1.dp, colors.primary),
                 colors = ButtonDefaults.outlinedButtonColors(contentColor = colors.primary)
             ) {
-                Text(stringResource(R.string.new_chat))
+                Text(stringResource(R.string.my_identity))
             }
         }
     }

@@ -7,7 +7,12 @@ import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import io.github.bluew9.rasail.ui.HomeScreen
+import io.github.bluew9.rasail.ui.IdentityScreen
 import io.github.bluew9.rasail.ui.RasailTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +26,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            RasailTheme { HomeScreen() }
+            RasailTheme {
+                var showIdentity by rememberSaveable { mutableStateOf(false) }
+                if (showIdentity) {
+                    IdentityScreen(onBack = { showIdentity = false })
+                } else {
+                    HomeScreen(onOpenIdentity = { showIdentity = true })
+                }
+            }
         }
     }
 }

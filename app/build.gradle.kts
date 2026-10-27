@@ -19,8 +19,8 @@ android {
         applicationId = "io.github.bluew9.rasail"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
     }
 
     signingConfigs {
@@ -40,6 +40,13 @@ android {
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             if (keystoreProps.isNotEmpty()) signingConfig = signingConfigs.getByName("release")
+        }
+    }
+
+    // libsignal-client ships desktop libraries too; they are useless on Android.
+    packaging {
+        resources {
+            excludes += setOf("libsignal_jni*.dylib", "signal_jni*.dll")
         }
     }
 
@@ -65,4 +72,9 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.material3:material3")
+
+    // Signal protocol (AGPL-3.0). Pinned; bump deliberately.
+    implementation("org.signal:libsignal-android:0.63.0")
+    // QR code encoding only (Apache-2.0, pure Java)
+    implementation("com.google.zxing:core:3.5.3")
 }
