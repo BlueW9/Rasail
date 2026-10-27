@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import io.github.bluew9.rasail.ui.HomeScreen
 import io.github.bluew9.rasail.ui.IdentityScreen
 import io.github.bluew9.rasail.ui.RasailTheme
+import io.github.bluew9.rasail.ui.ServerScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,11 +28,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RasailTheme {
-                var showIdentity by rememberSaveable { mutableStateOf(false) }
-                if (showIdentity) {
-                    IdentityScreen(onBack = { showIdentity = false })
-                } else {
-                    HomeScreen(onOpenIdentity = { showIdentity = true })
+                var screen by rememberSaveable { mutableStateOf("home") }
+                when (screen) {
+                    "identity" -> IdentityScreen(onBack = { screen = "home" })
+                    "server" -> ServerScreen(onBack = { screen = "home" })
+                    else -> HomeScreen(
+                        onOpenIdentity = { screen = "identity" },
+                        onOpenServer = { screen = "server" }
+                    )
                 }
             }
         }

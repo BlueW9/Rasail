@@ -3,6 +3,7 @@
     <string name="app_name">Rasail</string>
     <string name="empty_title">No chats yet</string>
     <string name="my_identity">My identity</string>
+    <string name="server">Server</string>
     <string name="back">Back</string>
     <string name="identity_title">My identity</string>
     <string name="identity_id_label">Your anonymous ID</string>
@@ -11,4 +12,10 @@
     <string name="identity_hint">Share this code only with people you want to talk to. It is derived from your public key and reveals nothing about you.</string>
     <string name="identity_loading">Creating your keys…</string>
     <string name="identity_failed">Your identity could not be read. It was not replaced, so nothing was lost. Please report this.</string>
+    <string name="server_title">Server</string>
+    <string name="server_address">Server address</string>
+    <string name="server_connect">Connect and register</string>
+    <string name="server_forget">Forget pinned server key</string>
+    <string name="server_fingerprint">Server key fingerprint</string>
+    <string name="server_hint">The first key the server shows is pinned. Compare this fingerprint with the one on your server. If it ever changes, the app refuses to connect.</string>
 </resources>

@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import io.github.bluew9.rasail.R
 
 @Composable
-fun HomeScreen(onOpenIdentity: () -> Unit) {
+fun HomeScreen(onOpenIdentity: () -> Unit, onOpenServer: () -> Unit) {
     val colors = MaterialTheme.colorScheme
     Box(
         modifier = Modifier
@@ -56,6 +56,14 @@ fun HomeScreen(onOpenIdentity: () -> Unit) {
                 colors = ButtonDefaults.outlinedButtonColors(contentColor = colors.primary)
             ) {
                 Text(stringResource(R.string.my_identity))
+            }
+            Spacer(Modifier.height(12.dp))
+            OutlinedButton(
+                onClick = onOpenServer,
+                border = BorderStroke(1.dp, colors.primary),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = colors.primary)
+            ) {
+                Text(stringResource(R.string.server))
             }
         }
     }

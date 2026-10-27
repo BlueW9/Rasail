@@ -11,7 +11,8 @@ import java.security.MessageDigest
 
 /** The user's anonymous identity: a Signal identity key pair, nothing else. */
 class Identity(val keyPair: IdentityKeyPair) {
-    private val publicKeyBytes: ByteArray = keyPair.publicKey.serialize()
+    /** 33 bytes: 0x05 + X25519 public key. */
+    val publicKeyBytes: ByteArray = keyPair.publicKey.serialize()
 
     /** 160-bit fingerprint of the public key, shown in groups of four. */
     val anonymousId: String = Base32.encode(
