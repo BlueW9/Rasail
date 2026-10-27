@@ -57,6 +57,7 @@ android {
     }
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -77,4 +78,5 @@ dependencies {
     implementation("org.signal:libsignal-android:0.63.0")
     // QR code encoding only (Apache-2.0, pure Java)
     implementation("com.google.zxing:core:3.5.3")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.2")
 }
