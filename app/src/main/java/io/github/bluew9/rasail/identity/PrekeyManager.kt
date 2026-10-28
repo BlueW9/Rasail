@@ -4,7 +4,7 @@ package io.github.bluew9.rasail.identity
 
 import android.content.Context
 import io.github.bluew9.rasail.crypto.KeystoreVault
-import org.signal.libsignal.protocol.ecc.ECKeyPair
+import org.signal.libsignal.protocol.ecc.Curve
 import org.signal.libsignal.protocol.kem.KEMKeyPair
 import org.signal.libsignal.protocol.kem.KEMKeyType
 import org.signal.libsignal.protocol.state.KyberPreKeyRecord
@@ -46,7 +46,7 @@ object PrekeyManager {
         val identityPrivate = identity.keyPair.privateKey
         val now = System.currentTimeMillis()
 
-        val signedPair = ECKeyPair.generate()
+        val signedPair = Curve.generateKeyPair()
         val signedSignature = identityPrivate.calculateSignature(signedPair.publicKey.serialize())
         val signed = SignedPreKeyRecord(1, now, signedPair, signedSignature)
 
@@ -54,7 +54,7 @@ object PrekeyManager {
         val kyberSignature = identityPrivate.calculateSignature(kyberPair.publicKey.serialize())
         val kyber = KyberPreKeyRecord(1, now, kyberPair, kyberSignature)
 
-        val oneTime = (1..ONE_TIME_COUNT).map { PreKeyRecord(it, ECKeyPair.generate()) }
+        val oneTime = (1..ONE_TIME_COUNT).map { PreKeyRecord(it, Curve.generateKeyPair()) }
         val registrationId = SecureRandom().nextInt(16380) + 1
         return PrekeyMaterial(registrationId, signed, kyber, oneTime)
     }
